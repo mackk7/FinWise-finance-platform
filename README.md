@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FinWise - Smart Finance Dashboard
 
-## Getting Started
+FinWise is a modern, responsive personal finance application designed to help users track expenses, manage budgets, and visualize their financial health.
 
-First, run the development server:
+[**🔴 Live Demo**](https://finwise-your-project.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+![Dashboard Screenshot](/public/banner.jpeg)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+* **📊 Visual Analytics:** Interactive charts for monthly expenses and income trends (Recharts).
+* **💰 Budget Management:** Set and track monthly budgets with visual progress indicators.
+* **📝 Transaction Tracking:** Detailed logs with filtering, sorting, and categorization.
+* **🧾 Receipt Scanning:** UI for uploading and parsing receipts (AI integration ready).
+* **📱 Fully Responsive:** Optimized for mobile, tablet, and desktop views.
+* **🔐 Secure Auth:** Integrated Clerk authentication flow.
+
+## 🛠️ Tech Stack
+
+* **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+* **Components:** [Shadcn UI](https://ui.shadcn.com/)
+* **Charts:** [Recharts](https://recharts.org/)
+* **Icons:** [Lucide React](https://lucide.dev/)
+* **Forms:** React Hook Form + Zod Validation
+
+## ⚡ Getting Started
+
+1.  **Clone the repository:**
+
+    ```bash
+    git clone [https://github.com/YOUR_USERNAME/finwise-finance-platform.git](https://github.com/YOUR_USERNAME/finwise-finance-platform.git)
+    cd finwise-finance-platform
+    ```
+
+2.  **Install dependencies:**
+
+    ```bash
+    # Use legacy-peer-deps to resolve React 19 conflicts
+    npm install --legacy-peer-deps
+    ```
+
+3.  **Run the development server:**
+
+    ```bash
+    npm run dev
+    ```
+
+4.  Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 🚧 Status & Architecture
+
+This project currently operates in **Frontend Prototype Mode**.
+
+* It uses sophisticated **Mock Data** and simulated API delays to demonstrate the full UI/UX flow without requiring a live backend connection.
+* **Why?** To demonstrate frontend proficiency with Next.js App Router, Shadcn UI architecture, and complex state management before implementing the microservices backend.
+* The next phase of development involves integrating a custom Express.js + MongoDB backend.
+
+## 📄 License
+
+MIT License. Feel free to use this code for your own portfolio!
+
+---
+
+### Reference
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
