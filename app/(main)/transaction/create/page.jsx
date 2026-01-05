@@ -1,7 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation"; // To parse ?edit=123
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import { Loader2 } from "lucide-react";
+
+import { AddTransactionForm } from "../_components/transaction-form";
 
 // 1. MOCK DATA & CATEGORIES
 const mockAccounts = [
@@ -26,7 +29,6 @@ const defaultCategories = [
   { id: "investments", name: "Investments", type: "INCOME" },
 ];
 
-// This mimics "getTransaction(editId)"
 const mockInitialTransaction = {
   id: "1",
   amount: "150.00",
@@ -38,25 +40,16 @@ const mockInitialTransaction = {
   type: "EXPENSE",
 };
 
-// FIX: Import your Transaction Form component
-// Ensure this path is correct: app/(main)/transaction/_components/transaction-form.jsx
-import { AddTransactionForm } from "../_components/transaction-form";
-
-export default function AddTransactionPage() {
+// 2. INNER COMPONENT (Uses searchParams)
+function AddTransactionContent() {
   const searchParams = useSearchParams();
   const editId = searchParams.get("edit");
-  
-  // State to hold initial data if editing
   const [initialData, setInitialData] = useState(null);
 
-  // Simulate fetching transaction data if an editId exists
   useEffect(() => {
     if (editId) {
-      console.log("Mock Fetching Transaction ID:", editId);
-      // In a real app, you'd await fetch(`/api/transactions/${editId}`)
-      // Here we just set mock data after a tiny delay to simulate async
+      // Simulate fetch
       const timer = setTimeout(() => {
-        // We'll just use one hardcoded transaction for any ID for simplicity
         setInitialData(mockInitialTransaction);
       }, 500);
       return () => clearTimeout(timer);
@@ -64,20 +57,35 @@ export default function AddTransactionPage() {
   }, [editId]);
 
   return (
-    <div className="max-w-3xl mx-auto px-5 py-10">
+    <>
       <div className="flex justify-center md:justify-normal mb-8">
         <h1 className="text-5xl gradient-title font-bold">
           {editId ? "Edit Transaction" : "Add Transaction"}
         </h1>
       </div>
       
-      {/* Render the Form with Mock Props */}
       <AddTransactionForm
         accounts={mockAccounts}
         categories={defaultCategories}
         editMode={!!editId}
         initialData={initialData}
       />
+    </>
+  );
+}
+
+// 3. MAIN PAGE (Wraps content in Suspense)
+export default function AddTransactionPage() {
+  return (
+    <div className="max-w-3xl mx-auto px-5 py-10">
+      {/* This Suspense boundary fixes the build error */}
+      <Suspense fallback={
+        <div className="flex justify-center items-center h-40">
+          <Loader2 className="h-8 w-8 animate-spin text-gray-500" />
+        </div>
+      }>
+        <AddTransactionContent />
+      </Suspense>
     </div>
   );
 }
