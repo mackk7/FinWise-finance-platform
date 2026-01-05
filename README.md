@@ -2,7 +2,7 @@
 
 FinWise is a modern, responsive personal finance application designed to help users track expenses, manage budgets, and visualize their financial health.
 
-[**🔴 Live Demo**](https://finwise-your-project.vercel.app)
+[**🔴 Live Demo**](https://fin-wise-finance-platform.vercel.app/)
 
 ![Dashboard Screenshot](/public/banner.jpeg)
 
